@@ -3,12 +3,25 @@ import MainLayout from "../Layouts/MainLayout";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoute from "../Provider/PrivateRoute";
+import AddTask from "../Pages/AddTask";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-   
+   children: [
+    {
+    path : "/",
+    element: <h2>Home</h2>,
+   },
+   {
+    path: "/add-task",
+    element: <PrivateRoute>
+        <AddTask></AddTask>
+    </PrivateRoute>,
+   }
+]
     
     
   },

@@ -2,7 +2,7 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthContext';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -11,6 +11,8 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signInWithGoogle, setUser, signIn } = use(AuthContext);
     const provider = new GoogleAuthProvider();
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,7 +21,7 @@ const Login = () => {
         console.log(email, password);
         signIn(email, password).then((result) => {
             const user = result.user;
-           
+            navigate(`${location.state ? location.state : "/"}`);
             setUser(user);
             toast.success("Login Successfully")
         }).catch((error) => {
@@ -31,7 +33,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-            
+                navigate(`${location.state ? location.state : "/"}`);
 
                 toast.success("Login Successfully")
 

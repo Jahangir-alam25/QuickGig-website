@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
+import { AuthContext } from "../Provider/AuthContext";
+import userIcon from "../assets/user.png";
 
 
 
@@ -8,12 +10,7 @@ import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-
-
-
-    const user = null
-
-
+    const { user } = use(AuthContext);
 
     const navLinks = [
         { name: "Home", path: "/" },
@@ -59,7 +56,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-3">
                             <div className="relative group">
                                 <img
-                                    src={`${user.photoURL ? user.photoURL : 'https://i.ibb.co/1fbf4mxt/application-1.png'}`}
+                                    src={`${user.photoURL ? user.photoURL : userIcon}`}
                                     alt="Profile"
                                     className="w-8 h-8 rounded-full cursor-pointer"
                                 />
@@ -109,7 +106,7 @@ const Navbar = () => {
                     {user ? (
                         <div className="flex items-center gap-3 px-3">
                             <img
-                                src={`${user.photoURL ? user.photoURL : 'https://i.ibb.co/1fbf4mxt/application-1.png'}`}
+                                src={`${user.photoURL ? user.photoURL : userIcon}`}
                                 alt="Profile"
                                 className="w-8 h-8 rounded-full"
                             />
@@ -120,10 +117,10 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className=" gap-3 flex justify-between ">
-                         <Link to="#" className="bg-green-600 btn-block text-white  text-center py-2 rounded hover:bg-green-700 text-sm">
+                         <Link to="/auth/register" className="bg-green-600 btn-block text-white  text-center py-2 rounded hover:bg-green-700 text-sm">
                             Sign Up
                         </Link>
-                         <Link to="#" className="bg-green-600 btn-block text-white text-center py-2 rounded hover:bg-green-700 text-sm">
+                         <Link to="/auth/login" className="bg-green-600 btn-block text-white text-center py-2 rounded hover:bg-green-700 text-sm">
                             Login
                         </Link>
                        </div>
