@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AddTask from "../Pages/AddTask";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -40,4 +41,8 @@ export const router = createBrowserRouter([
     
     ]
   },
+  {
+    path: "/*",
+    element: <ErrorPage></ErrorPage>,
+  }
 ]);

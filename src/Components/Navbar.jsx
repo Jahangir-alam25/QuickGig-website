@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import { AuthContext } from "../Provider/AuthContext";
 import userIcon from "../assets/user.png";
+import Swal from "sweetalert2";
 
 
 
@@ -10,7 +11,22 @@ import userIcon from "../assets/user.png";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user } = use(AuthContext);
+    const { user, logOut } = use(AuthContext);
+
+     const handleLogOut = () => {
+    console.log("user trying to LogOut");
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Logout Successfully",
+          text: "You clicked the button!",
+          icon: "success"
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
     const navLinks = [
         { name: "Home", path: "/" },
@@ -64,7 +80,7 @@ const Navbar = () => {
                                     {user.displayName}
                                 </span>
                             </div>
-                            <button className="text-sm btn px-10 bg-green-600 text-white hover:underline">Logout</button>
+                            <button onClick={handleLogOut} className="text-sm btn px-10 bg-green-600 text-white hover:underline">Logout</button>
                         </div>
                     ) : (
                        <div className="space-x-3">
@@ -111,7 +127,7 @@ const Navbar = () => {
                                 className="w-8 h-8 rounded-full"
                             />
                             <span className="text-sm">{user.username}</span>
-                            <button className="btn px-10 bg-green-600  text-white hover:underline ml-auto">
+                            <button onClick={handleLogOut} className="btn px-10 bg-green-600  text-white hover:underline ml-auto">
                                 Logout
                             </button>
                         </div>
