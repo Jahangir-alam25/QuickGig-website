@@ -1,21 +1,74 @@
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaEyeSlash } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../Provider/AuthContext';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const { createUser, signInWithGoogle, setUser, updateUser } = use(AuthContext);
+    const provider = new GoogleAuthProvider();
+    const navigate = useNavigate();
     const handleRegister = (e) => {
         e.preventDefault();
+        const name = e.target.name.value;
+        const photo = e.target.photo.value
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        createUser(email, password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: photo });
+                        navigate("/");
+                        Swal.fire({
+                            title: "Good job! Register Successfully",
+                            text: "You clicked the button!",
+                            icon: "success"
+                        })
+                    })
+                    .catch((error) => {
+                        toast.error(`${error.message}`)
+                        setUser(user);
+                    });
+
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+                // ..
+            });
     }
-    const handleSignInWithGoogle = () => {
-        // Google sign-in logic here
+   const handleSignInWithGoogle = () => {
+           signInWithGoogle(provider)
+               .then((result) => {
+                   const user = result.user;
+                   setUser(user);
+                   navigate("/");
+                   Swal.fire({
+                       title: "Good job! Register Successfully",
+                       text: "You clicked the button!",
+                       icon: "success"
+                   })
+               })
+               .catch((error) => {
+                   toast.error(`${error.message}`)
+                     console.log(error);
+               })
     }
     return (
-         <div className='flex justify-center items-center min-h-screen my-10'>
-         
+        <div className='flex justify-center items-center min-h-screen my-10'>
+
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
                 <h3 className='font-bold text-2xl text-center'>Register Your Account</h3>
                 <form onSubmit={handleRegister} className="card-body">
