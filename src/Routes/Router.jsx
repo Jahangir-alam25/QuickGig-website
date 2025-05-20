@@ -6,6 +6,7 @@ import Register from "../Pages/Register";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AddTask from "../Pages/AddTask";
 import ErrorPage from "../Pages/ErrorPage";
+import Home from "../Pages/Home";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
    children: [
     {
     path : "/",
-    element: <h2>Home</h2>,
+    element: <Home></Home>,
    },
    {
     path: "/add-task",

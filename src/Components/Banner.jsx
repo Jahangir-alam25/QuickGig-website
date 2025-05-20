@@ -52,7 +52,7 @@ const Banner = () => {
             <div className="text-center mb-6">
                 <h2 className="text-3xl font-bold text-gray-800">Empowering You Through Every Gig</h2>
                 <p className="text-gray-600 mt-2">
-                   Explore a smarter way to hire help or earn from your skills. QuickGig connects people and tasks—fast, flexible, and reliable.
+                    Explore a smarter way to hire help or earn from your skills. QuickGig connects people and tasks—fast, flexible, and reliable.
                 </p>
             </div>
             <Slider {...settings}>
@@ -62,9 +62,9 @@ const Banner = () => {
                             <img src={slide.image} alt={slide.title} className="w-full h-96 object-cover" />
 
                             <div className="absolute inset-0  bg-opacity-50 flex flex-col items-center justify-center  text-center px-4">
-              <h2 className="text-3xl md:text-5xl font-extrabold drop-shadow-lg">{slide.title}</h2>
-              <p className="mt-3 text-md md:text-xl font-medium drop-shadow">{slide.subtitle}</p>
-            </div>
+                                <h2 className="text-3xl md:text-5xl font-extrabold drop-shadow-lg">{slide.title}</h2>
+                                <p className="mt-3 text-md md:text-xl font-medium drop-shadow">{slide.subtitle}</p>
+                            </div>
 
                         </div>
                     </div>
@@ -75,4 +75,6 @@ const Banner = () => {
 };
 
 export default Banner;
+
+
 
