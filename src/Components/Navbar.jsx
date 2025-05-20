@@ -11,10 +11,7 @@ const Navbar = () => {
 
 
 
-    const user = {
-        displayName: "John Doe",
-        photoURL: "https://i.ibb.co/1fbf4mxt/application-1.png",
-    }
+    const user = null
 
 
 
@@ -77,7 +74,7 @@ const Navbar = () => {
                          <Link to="#" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
                             Sign Up
                         </Link>
-                         <Link to="#" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
+                         <Link to="/auth/login" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
                             Login
                         </Link>
                        </div>
