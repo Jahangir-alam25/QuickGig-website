@@ -1,7 +1,8 @@
-import { Link } from 'lucide-react';
+
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router';
 
 const Login = () => {
        const [showPassword, setShowPassword] = useState(false);
@@ -47,7 +48,7 @@ const Login = () => {
                                     <FcGoogle size={20}></FcGoogle>
                                     Continue with Google
                                 </button>
-                                <h3 className='font-bold text-center py-2'>Don't have an account ? </h3>
+                                <h3 className='font-bold text-center py-2'>Don't have an account ? <Link className='text-secondary' to="/auth/register">Register</Link></h3>
                             </fieldset>
                         </form>
                     </div>

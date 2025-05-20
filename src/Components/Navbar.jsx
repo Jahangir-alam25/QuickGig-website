@@ -71,7 +71,7 @@ const Navbar = () => {
                         </div>
                     ) : (
                        <div className="space-x-3">
-                         <Link to="#" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
+                         <Link to="/auth/register" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
                             Sign Up
                         </Link>
                          <Link to="/auth/login" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
