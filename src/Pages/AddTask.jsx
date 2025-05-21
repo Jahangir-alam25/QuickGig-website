@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import { toast } from 'react-toastify';
+import { AuthContext } from "../Provider/AuthContext";
 
 const AddTask = () => {
+  const {user} = use(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -73,13 +75,13 @@ const AddTask = () => {
       {/* User Email */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">User Email</label>
-        <input type="email" name="userEmail" value="user@example.com" readOnly className="input w-full bg-gray-100" />
+        <input type="email" name="userEmail" value={user?.email} readOnly className="input w-full bg-gray-100" />
       </fieldset>
 
       {/* User Name */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">User Name</label>
-        <input type="text" name="userName" value="John Doe" readOnly className="input w-full bg-gray-100" />
+        <input type="text" name="userName" value={user?.displayName} readOnly className="input w-full bg-gray-100" />
       </fieldset>
     </div>
 

@@ -7,6 +7,7 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import AddTask from "../Pages/AddTask";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
+import PostedTasks from "../Pages/PostedTasks";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,13 @@ export const router = createBrowserRouter([
     path: "/add-task",
     element: <PrivateRoute>
         <AddTask></AddTask>
+    </PrivateRoute>,
+   },
+   {
+    path:"/my-posted-tasks",
+    loader: () => fetch("http://localhost:3000/tasks"),
+    element: <PrivateRoute>
+        <PostedTasks></PostedTasks>
     </PrivateRoute>,
    }
 ]
