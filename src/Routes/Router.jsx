@@ -8,6 +8,9 @@ import AddTask from "../Pages/AddTask";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import PostedTasks from "../Pages/PostedTasks";
+import UpdatedTask from "../Pages/UpdatedTask";
+import MyProfile from "../Components/MyProfile";
+import BrowseTasks from "../Pages/BrowseTasks";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +33,24 @@ export const router = createBrowserRouter([
     element: <PrivateRoute>
         <PostedTasks></PostedTasks>
     </PrivateRoute>,
+   },
+   {
+    path:"/update-task/:id",
+    loader: () => fetch("http://localhost:3000/tasks"),
+    element: <PrivateRoute>
+        <UpdatedTask></UpdatedTask>
+    </PrivateRoute>,
+   },
+   {
+    path: "/profile",
+    element: <PrivateRoute>
+        <MyProfile></MyProfile>
+    </PrivateRoute>,
+   },
+   {
+    path: "/browse-tasks",
+    loader: () => fetch("http://localhost:3000/tasks"),
+    element: <BrowseTasks></BrowseTasks>,
    }
 ]
     

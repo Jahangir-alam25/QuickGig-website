@@ -118,6 +118,7 @@ const Navbar = () => {
                             {link.name}
                         </NavLink>
                     ))}
+                    <NavLink to="/profile" className={({ isActive }) => (isActive ? activeClass : linkClass)}>My Profile</NavLink>
 
                     {user ? (
                         <div className="flex items-center gap-3 px-3">
