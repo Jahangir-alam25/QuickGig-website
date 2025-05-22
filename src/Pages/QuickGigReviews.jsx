@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 const QuickGigReviews = () => {
     return (
-        <div className="py-10 bg-gray-100 px-4 md:px-8 lg:px-16">
+        <div className="pb-10 px-4 md:px-8 lg:px-16">
             <div className="text-center mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold py-2 md:py-4">
                     What Our <span className="text-pink-500">Users</span> Say About QuickGig

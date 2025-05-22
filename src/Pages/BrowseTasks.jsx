@@ -12,7 +12,7 @@ const BrowseTasks = () => {
 
         
                 {allTasks.map((task) => (
-                    <div className="bg-white rounded-2xl shadow-lg border hover:shadow-xl transition duration-300 p-5 flex flex-col justify-between">
+                    <div key={task._id} className="bg-white rounded-2xl shadow-lg border hover:shadow-xl transition duration-300 p-5 flex flex-col justify-between">
                         <div>
                             <h2 className="text-2xl font-bold text-gray-800 mb-1">{task.title}</h2>
                             <span className="inline-block text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full mb-3 font-semibold">
@@ -24,7 +24,7 @@ const BrowseTasks = () => {
                         <div className="mt-auto">
                             <div className="flex justify-between text-sm text-gray-500 font-medium mb-4">
                                 <span>💰 ${task.budget}</span>
-                                <span>🗓 {task.deadline}</span>
+                                <span>🗓Deadline : {task.deadline}</span>
                             </div>
 
                             <button
