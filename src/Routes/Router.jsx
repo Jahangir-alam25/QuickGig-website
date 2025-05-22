@@ -11,6 +11,7 @@ import PostedTasks from "../Pages/PostedTasks";
 import UpdatedTask from "../Pages/UpdatedTask";
 import MyProfile from "../Components/MyProfile";
 import BrowseTasks from "../Pages/BrowseTasks";
+import TaskDetails from "../Pages/TaskDetails";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
    },
    {
     path:"/update-task/:id",
-    loader: () => fetch("http://localhost:3000/tasks"),
+    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
     element: <PrivateRoute>
         <UpdatedTask></UpdatedTask>
     </PrivateRoute>,
@@ -51,6 +52,13 @@ export const router = createBrowserRouter([
     path: "/browse-tasks",
     loader: () => fetch("http://localhost:3000/tasks"),
     element: <BrowseTasks></BrowseTasks>,
+   },
+   {
+    path: "/task-details/:id",
+    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    element: <PrivateRoute>
+        <TaskDetails></TaskDetails>
+    </PrivateRoute>,
    }
 ]
     

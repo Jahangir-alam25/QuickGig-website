@@ -11,17 +11,17 @@ const Banner = () => {
         {
             image: "https://i.ibb.co/rfmQLSLz/shot-young-male-uses-laptop-computer-checking-exchange-rate-internet-works-with-financial-documents.jpg",
             title: "Welcome to QuickGig",
-            subtitle: "Find or post short-term gigs in minutes.",
+            subtitle: "We connect talented freelancers with clients worldwide for diverse, quality-driven remote work opportunities.",
         },
         {
-            image: "https://i.ibb.co/NgcvZqQW/medical1.webp",
-            title: "Post Your Task Today",
-            subtitle: "Need help? Post a gig and get instant offers from skilled workers.",
+            image: "https://i.ibb.co/0yVZRDsw/handsome-man-laughing-while-working-laptop-living-room-girlfriend-background-talks-phone.jpg",
+            title: "QuickGig - Connect, Work, Grow Online",
+            subtitle: "We link global freelancers with clients, offering secure, flexible, and professional work opportunities.",
         },
         {
-            image: "https://i.ibb.co/SDsSj33Q/IMG-20250507-WA0009.jpg",
-            title: "Get Paid for Your Skills",
-            subtitle: "Browse tasks, offer your services, and earn on your terms.",
+            image: "https://i.ibb.co/1G0RP2Ch/happy-male-with-satisfied-expression.jpg",
+            title: "QuickGig - Where Talent Meets Opportunity Online",
+            subtitle: "We connect skilled freelancers with clients worldwide for secure, flexible, and rewarding remote jobs..",
         },
     ];
 
@@ -37,7 +37,7 @@ const Banner = () => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto my-6">
+        <div className="w-11/12 mx-auto my-6">
             <div className="flex  sm:flex-row justify-center items-center mb-10 ">
                 <input
                     className="bg-white w-full lg:w-5/12 sm:w-80 px-4 py-2 rounded-l-2xl border border-gray-300 shadow-sm"
@@ -56,16 +56,17 @@ const Banner = () => {
                 </p>
             </div>
             <Slider {...settings}>
-                {slides.map(slide => (
-                    <div key={slide.id} className="p-4">
-                        <div className="rounded-xl shadow-lg overflow-hidden bg-white relative">
-                            <img src={slide.image} alt={slide.title} className="w-full h-96 object-cover" />
-
-                            <div className="absolute inset-0  bg-opacity-50 flex flex-col items-center justify-center  text-center px-4">
-                                <h2 className="text-3xl md:text-5xl font-extrabold drop-shadow-lg">{slide.title}</h2>
-                                <p className="mt-3 text-md md:text-xl font-medium drop-shadow">{slide.subtitle}</p>
-                            </div>
-
+                {slides.map((slide, index) => (
+                    <div key={index} className="relative">
+                        <img
+                            className="rounded-lg w-full h-120"
+                            src={slide.image}
+                            alt="Slide 1"
+                        />
+                        <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white rounded-lg">
+                            <h2 className="text-3xl font-bold">{slide.title}</h2>
+                            <p className="text-center my-4">{slide.subtitle}</p>
+                            <button className="btn text-white bg-[#009fff]">Learn More</button>
                         </div>
                     </div>
                 ))}
@@ -75,6 +76,73 @@ const Banner = () => {
 };
 
 export default Banner;
+
+// import React from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Autoplay } from "swiper/modules";
+// import "swiper/css";
+
+// const Banner = () => {
+//   return (
+//     <div className="w-11/12 mx-auto my-12">
+//       <Swiper
+//         slidesPerView={1}
+//         navigation
+//         pagination={{ clickable: true }}
+//         autoplay={{ delay: 5000, disableOnInteraction: false }}
+//         modules={[Autoplay]}
+//         className="relative"
+//       >
+//         <SwiperSlide>
+//   <div className="relative">
+//     <img
+//       className="rounded-lg w-full h-160"
+//       src="https://i.ibb.co/6RV09c29/freelancer4.jpg"
+//       alt="Slide 1"
+//     />
+//     <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white rounded-lg">
+//       <h2 className="text-3xl font-bold">Welcome to QuickGig</h2>
+//       <p className="text-center my-4">We connect talented freelancers with clients worldwide for diverse, <br /> quality-driven remote work opportunities.</p>
+//        <button className="btn text-white bg-[#009fff]">Learn More</button>
+//     </div>
+//   </div>
+//         </SwiperSlide>
+
+//         <SwiperSlide>
+//           <div className="relative">
+//             <img
+//               className="rounded-lg w-full h-160"
+//               src="https://i.ibb.co/fV2kpRMh/freelancer5.jpg"
+//               alt="Slide 2"
+//             />
+//             <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white rounded-lg">
+//               <h2 className="text-3xl font-bold">QuickGig – Connect, Work, Grow Online</h2>
+//               <p className="text-center my-4">We link global freelancers with clients, offering secure, flexible,<br /> and professional work opportunities.</p>
+//                 <button className="btn text-white bg-[#009fff]">Learn More</button>
+//             </div>
+//           </div>
+//         </SwiperSlide>
+
+//         <SwiperSlide>
+//           <div className="relative">
+//             <img
+//               className="rounded-lg w-full h-160"
+//               src="https://i.ibb.co/m5dRV0w3/freelancer3.jpg"
+//               alt="Slide 3"
+//             />
+//             <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white rounded-lg">
+//               <h2 className="text-3xl font-bold">QuickGig – Where Talent Meets Opportunity Online</h2>
+//               <p className="text-center my-4">We connect skilled freelancers with clients worldwide for secure, <br /> flexible, and rewarding remote jobs..</p>
+//                <button className="btn text-white bg-[#009fff]">Learn More</button>
+//             </div>
+//           </div>
+//         </SwiperSlide>
+//       </Swiper>
+//     </div>
+//   );
+// };
+
+// export default Banner;
 
 
 

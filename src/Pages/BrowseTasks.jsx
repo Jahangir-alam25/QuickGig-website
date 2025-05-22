@@ -1,8 +1,13 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 const BrowseTasks = () => {
     const allTasks = useLoaderData();
+    const navigate = useNavigate();
+
+    const  handleDetails = (id) => {
+        navigate(`/task-details/${id}`);
+    }
     return (
 
         <div className='w-11/12 mx-auto my-12'>
@@ -28,7 +33,7 @@ const BrowseTasks = () => {
                             </div>
 
                             <button
-                                
+                                onClick={() => handleDetails(task._id)}
                                 className="w-full bg-gradient-to-r from-green-500 to-indigo-600 text-white py-2 rounded-lg hover:from-green-600 hover:to-indigo-700 transition"
                             >
                                 See Details

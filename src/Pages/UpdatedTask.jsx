@@ -1,30 +1,46 @@
 import React, { use } from 'react';
-import { toast } from 'react-toastify';
+
 import { AuthContext } from "../Provider/AuthContext";
+import { useLoaderData, useNavigate } from 'react-router';
+import Swal from "sweetalert2";
 
 const UpdatedTask = () => {
   const {user} = use(AuthContext);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const formdata = new FormData(form);
-    const taskData = Object.fromEntries(formdata.entries());
-    fetch('http://localhost:3000/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(taskData),
-      })
-      .then(res=> res.json())
-      .then(data => {
-        if (data.insertedId) {
-          toast.success('Task added successfully');
-          form.reset();
-        }
-      });
+  const task = useLoaderData()
+  const navigate = useNavigate();
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const form = event.target;
 
+  const taskData = {
+    title: form.title.value,
+    category: form.category.value,
+    description: form.description.value,
+    deadline: form.deadline.value,
+    budget: form.budget.value,
+    // Do NOT include userEmail or userName
   };
+
+  fetch(`http://localhost:3000/tasks/${task._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(taskData),
+  })
+    .then(res => res.json())
+    .then((data) => {
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Updated!",
+          text: "Task updated successfully!",
+        });
+        navigate("/my-posted-tasks");
+      }
+    });
+};
+
     return (
         <div className="px-4 py-12 md:px-24">
   <div className="text-center space-y-4 mb-10">
@@ -39,13 +55,13 @@ const UpdatedTask = () => {
       {/* Task Title */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">Task Title</label>
-        <input type="text" name="title" className="input w-full" placeholder="Enter task title" required />
+        <input type="text" name="title" className="input w-full" placeholder="Enter task title" defaultValue={task.title} required />
       </fieldset>
 
       {/* Category */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">Category</label>
-        <select name="category" className="select w-full" required>
+        <select name="category" className="select w-full" defaultValue={task.category} required>
           <option value="">Select Category</option>
           <option value="Web Development">Web Development</option>
           <option value="Design">Design</option>
@@ -57,19 +73,19 @@ const UpdatedTask = () => {
       {/* Description (Full Width) */}
       <fieldset className="md:col-span-2 bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">Description</label>
-        <textarea name="description" rows="4" className="textarea w-full" placeholder="Describe the task in detail" required></textarea>
+        <textarea name="description" rows="4" className="textarea w-full" placeholder="Describe the task in detail" defaultValue={task.description} required></textarea>
       </fieldset>
 
       {/* Deadline */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">Deadline</label>
-        <input type="date" name="deadline" className="input w-full" required />
+        <input type="date" name="deadline" className="input w-full" defaultValue={task.deadline} required />
       </fieldset>
 
       {/* Budget */}
       <fieldset className="bg-base-200 border border-base-300 rounded-lg p-4">
         <label className="block mb-1 font-medium">Budget ($)</label>
-        <input type="number" name="budget" className="input w-full" placeholder="e.g. 200" required />
+        <input type="number" name="budget" className="input w-full" placeholder="e.g. 200" defaultValue={task.budget} required />
       </fieldset>
 
       {/* User Email */}
@@ -96,3 +112,4 @@ const UpdatedTask = () => {
 };
 
 export default UpdatedTask;
+
