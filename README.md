@@ -1,12 +1,60 @@
-# React + Vite
+# 🌟 QuickGig - Freelancer Marketplace Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**QuickGig** is a modern and user-friendly freelancer marketplace where clients and freelancers can connect, collaborate, and complete tasks seamlessly.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Site
 
-## Expanding the ESLint configuration
+🔗 [Visit QuickGig](https://quickgig-live-site.com)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> Replace this with your actual deployed link
+
+---
+
+## 🚀 Key Features
+
+- 📝 **Post Tasks Easily** – Clients can quickly post freelance jobs across multiple categories.
+- 💼 **Bid on Projects** – Freelancers can bid on available tasks and showcase their skills.
+- 🔐 **Firebase Authentication** – Secure login/signup with email or providers like Google.
+- 🔔 **Instant Notifications** – Feedback alerts via React Toastify.
+- 🧠 **Helpful UI Enhancements** – SweetAlert2 confirmations & tooltips for better UX.
+- 🎨 **Modern Design** – Responsive layout using Tailwind CSS, Lucide & React Icons.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React.js
+- React Router
+- Tailwind CSS
+- Firebase (Authentication, optionally Hosting)
+- React Toastify
+- Slick Carousel
+- SweetAlert2
+- React Tooltip / Tippy.js
+- React Icons & Lucide Icons
+
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB
+- **CORS** (secure cross-origin requests)
+- **dotenv** (for environment variables)
+- RESTful API architecture
+
+**Tools & DevOps:**
+- Vite (fast frontend builds)
+- Git & GitHub (version control)
+- Firebase Console (Auth & Hosting)
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/quickgig.git
+cd quickgig

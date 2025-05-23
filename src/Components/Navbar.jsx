@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { AuthContext } from "../Provider/AuthContext";
 import userIcon from "../assets/user.png";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 
 
@@ -51,8 +52,11 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="flex items-center gap-2 ">
                     <img src="https://i.ibb.co/spxk8Q2n/5464588.jpg" alt="logo" className="h-12 w-12" />
-                    <h1 className="text-green-600 font-bold text-2xl">Quick<span className="text-pink-300">G</span>ig</h1>
+                    <h1 className="text-green-600 font-bold text-2xl"><a data-tooltip-id="my-tooltip" data-tooltip-content="QuickGig is a Freelance Marketplace. It is launched Since 1985">Quick<span className="text-pink-300">G</span>ig</a></h1>
+                     <Tooltip id="my-tooltip" style={{ backgroundColor: "rgb(0,170,255)", color: "#222" }} />
                 </div>
+             
+         
 
                 {/* Desktop Nav Links */}
             <div className="hidden md:flex space-x-3">
