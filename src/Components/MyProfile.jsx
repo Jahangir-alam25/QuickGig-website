@@ -4,11 +4,12 @@ import { updateProfile } from "firebase/auth";
 
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 
 const MyProfile = () => {
 
- const {user} = use(AuthContext);
+  const { user } = use(AuthContext);
 
   const [name, setName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
@@ -23,7 +24,7 @@ const MyProfile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-  
+
 
     try {
       await updateProfile(user, {
@@ -39,8 +40,11 @@ const MyProfile = () => {
   if (!user) return <p>Please log in to view your profile.</p>;
 
   return (
-    <div className="max-w-md mx-auto p-4 shadow-lg rounded-lg bg-white space-y-4 my-10">
-     
+    <div className="bg-amber-50 dark:bg-gray-800 py-12">
+      <div className="max-w-md mx-auto p-4 shadow-lg rounded-lg border dark:bg-gray-800 dark:text-white bg-white space-y-4">
+      <Helmet>
+        <title>My Profile - QuickGig</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-center">My Profile</h2>
 
       <div className="text-center">
@@ -50,7 +54,7 @@ const MyProfile = () => {
           alt={user.displayName || "User"}
         />
         <p className="mt-2 text-lg font-semibold">{user.displayName}</p>
-        <p className="text-sm text-gray-600">{user.email}</p>
+        <p className="text-sm dark:text-gray-300 text-gray-600">{user.email}</p>
       </div>
 
       <form onSubmit={handleUpdate} className="space-y-4">
@@ -85,6 +89,7 @@ const MyProfile = () => {
       </form>
 
 
+    </div>
     </div>
   );
 };

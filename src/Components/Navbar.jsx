@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthContext";
 import userIcon from "../assets/user.png";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
+import DarkMoodToggler from "./DarkMoodToggle";
 
 
 
@@ -14,20 +15,20 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { user, logOut } = use(AuthContext);
 
-     const handleLogOut = () => {
-    console.log("user trying to LogOut");
-    logOut()
-      .then(() => {
-        Swal.fire({
-          title: "Logout Successfully",
-          text: "You clicked the button!",
-          icon: "success"
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    const handleLogOut = () => {
+        console.log("user trying to LogOut");
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    title: "Logout Successfully",
+                    text: "You clicked the button!",
+                    icon: "success"
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     const navLinks = [
         { name: "Home", path: "/" },
@@ -44,32 +45,32 @@ const Navbar = () => {
         "text-blue-800 hover:text-pink-600 px-3 py-2 rounded-md  font-medium";
 
     const activeClass =
-        "underline text-pink-300    px-3 py-2 rounded-md  font-medium"; 
+        "underline text-pink-300    px-3 py-2 rounded-md  font-medium";
 
     return (
-        <nav className=" border-b  px-4 py-3">
+        <nav className=" border-b  px-4 py-3 dark:bg-gray-800 bg-amber-50 dark:text-white">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center gap-2 ">
                     <img src="https://i.ibb.co/spxk8Q2n/5464588.jpg" alt="logo" className="h-12 w-12" />
                     <h1 className="text-green-600 font-bold text-2xl"><a data-tooltip-id="my-tooltip" data-tooltip-content="QuickGig is a Freelance Marketplace. It is launched Since 1985">Quick<span className="text-pink-300">G</span>ig</a></h1>
-                     <Tooltip id="my-tooltip" style={{ backgroundColor: "rgb(0,170,255)", color: "#222" }} />
+                    <Tooltip id="my-tooltip" style={{ backgroundColor: "rgb(0,170,255)", color: "#222" }} />
                 </div>
-             
-         
+
+
 
                 {/* Desktop Nav Links */}
-            <div className="hidden md:flex space-x-3">
+                <div className="hidden md:flex space-x-3">
                     {navLinks.map((link) => (
-                    <NavLink
-                        key={link.name}
-                        to={link.path}
-                        className={({ isActive }) => (isActive ? activeClass : linkClass)}
-                    >
-                        {link.name}
-                    </NavLink>
-                ))}
-            </div>
+                        <NavLink
+                            key={link.name}
+                            to={link.path}
+                            className={({ isActive }) => (isActive ? activeClass : linkClass)}
+                        >
+                            {link.name}
+                        </NavLink>
+                    ))}
+                </div>
                 <div className="hidden md:flex items-center gap-6">
                     <NavLink to="/profile" className={({ isActive }) => (isActive ? activeClass : linkClass)}>My Profile</NavLink>
                     {user ? (
@@ -87,15 +88,18 @@ const Navbar = () => {
                             <button onClick={handleLogOut} className="text-sm btn px-10 bg-green-600 text-white hover:underline">Logout</button>
                         </div>
                     ) : (
-                       <div className="space-x-3">
-                         <Link to="/auth/register" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
-                            Sign Up
-                        </Link>
-                         <Link to="/auth/login" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
-                            Login
-                        </Link>
-                       </div>
+                        <div className="space-x-3">
+                            <Link to="/auth/register" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
+                                Sign Up
+                            </Link>
+                            <Link to="/auth/login" className="bg-green-600 text-white px-10 py-2 rounded hover:bg-green-700 text-sm">
+                                Login
+                            </Link>
+                        </div>
                     )}
+                    <div>
+                        <DarkMoodToggler></DarkMoodToggler>
+                    </div>
 
                 </div>
 
@@ -110,19 +114,26 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="md:hidden mt-4 space-y-2">
-                    {navLinks.map((link) => (
-                        <NavLink
-                            key={link.name}
-                            to={link.path}
-                            className={({ isActive }) =>
-                                isActive ? `${activeClass} block` : `${linkClass} block`
-                            }
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            {link.name}
-                        </NavLink>
-                    ))}
-                    <NavLink to="/profile" className={({ isActive }) => (isActive ? activeClass : linkClass)}>My Profile</NavLink>
+                    <div className="flex gap-3 justify-between">
+                        <div>
+                            {navLinks.map((link) => (
+                                <NavLink
+                                    key={link.name}
+                                    to={link.path}
+                                    className={({ isActive }) =>
+                                        isActive ? `${activeClass} block` : `${linkClass} block`
+                                    }
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {link.name}
+                                </NavLink>
+                            ))}
+                            <NavLink to="/profile" className={({ isActive }) => (isActive ? activeClass : linkClass)}>My Profile</NavLink>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <DarkMoodToggler></DarkMoodToggler>
+                        </div>
+                    </div>
 
                     {user ? (
                         <div className="flex items-center gap-3 px-3">
@@ -138,13 +149,13 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className=" gap-3 flex justify-between ">
-                         <Link to="/auth/register" className="bg-green-600 btn-block text-white  text-center py-2 rounded hover:bg-green-700 text-sm">
-                            Sign Up
-                        </Link>
-                         <Link to="/auth/login" className="bg-green-600 btn-block text-white text-center py-2 rounded hover:bg-green-700 text-sm">
-                            Login
-                        </Link>
-                       </div>
+                            <Link to="/auth/register" className="bg-green-600 btn-block text-white  text-center py-2 rounded hover:bg-green-700 text-sm">
+                                Sign Up
+                            </Link>
+                            <Link to="/auth/login" className="bg-green-600 btn-block text-white text-center py-2 rounded hover:bg-green-700 text-sm">
+                                Login
+                            </Link>
+                        </div>
 
                     )}
                 </div>

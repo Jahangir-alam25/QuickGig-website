@@ -6,7 +6,7 @@
 
 ## 🌐 Live Site
 
-🔗 [Visit QuickGig](https://quickgig-live-site.com)
+🔗 [Visit QuickGig](https://serene-daffodil-19ba7c.netlify.app/)
 
 > Replace this with your actual deployed link
 

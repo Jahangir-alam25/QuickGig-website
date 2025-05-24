@@ -12,6 +12,7 @@ import UpdatedTask from "../Pages/UpdatedTask";
 import MyProfile from "../Components/MyProfile";
 import BrowseTasks from "../Pages/BrowseTasks";
 import TaskDetails from "../Pages/TaskDetails";
+import Loading from "../Pages/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -30,14 +31,16 @@ export const router = createBrowserRouter([
    },
    {
     path:"/my-posted-tasks",
-    loader: () => fetch("http://localhost:3000/tasks"),
+    hydrateFallbackElement: <Loading></Loading>,
+    loader: () => fetch("https://a10-freelance-task-marketplace-server-ph.vercel.app/tasks"),
     element: <PrivateRoute>
         <PostedTasks></PostedTasks>
     </PrivateRoute>,
    },
    {
     path:"/update-task/:id",
-    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    hydrateFallbackElement: <Loading></Loading>,
+    loader: ({params}) => fetch(`https://a10-freelance-task-marketplace-server-ph.vercel.app/tasks/${params.id}`),
     element: <PrivateRoute>
         <UpdatedTask></UpdatedTask>
     </PrivateRoute>,
@@ -50,12 +53,14 @@ export const router = createBrowserRouter([
    },
    {
     path: "/browse-tasks",
-    loader: () => fetch("http://localhost:3000/tasks"),
+    hydrateFallbackElement: <Loading></Loading>,
+    loader: () => fetch("https://a10-freelance-task-marketplace-server-ph.vercel.app/tasks"),
     element: <BrowseTasks></BrowseTasks>,
    },
    {
     path: "/task-details/:id",
-    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    hydrateFallbackElement: <Loading></Loading>,
+    loader: ({params}) => fetch(`https://a10-freelance-task-marketplace-server-ph.vercel.app/tasks/${params.id}`),
     element: <PrivateRoute>
         <TaskDetails></TaskDetails>
     </PrivateRoute>,

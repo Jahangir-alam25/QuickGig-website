@@ -8,6 +8,7 @@ import { AuthContext } from '../Provider/AuthContext';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -43,48 +44,49 @@ const Register = () => {
                 // ...
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-                // ..
+                
+                toast.error(`${error.message}`)
+                
             });
     }
-   const handleSignInWithGoogle = () => {
-           signInWithGoogle(provider)
-               .then((result) => {
-                   const user = result.user;
-                   setUser(user);
-                   navigate("/");
-                   Swal.fire({
-                       title: "Good job! Register Successfully",
-                       text: "You clicked the button!",
-                       icon: "success"
-                   })
-               })
-               .catch((error) => {
-                   toast.error(`${error.message}`)
-                     console.log(error);
-               })
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle(provider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                navigate("/");
+                Swal.fire({
+                    title: "Good job! Register Successfully",
+                    text: "You clicked the button!",
+                    icon: "success"
+                })
+            })
+            .catch((error) => {
+                toast.error(`${error.message}`)
+               
+            })
     }
     return (
-        <div className='flex justify-center items-center min-h-screen my-10'>
-
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-                <h3 className='font-bold text-2xl text-center'>Register Your Account</h3>
+        <div className='flex justify-center items-center min-h-screen py-10 dark:bg-gray-800 bg-amber-50'>
+            <Helmet>
+                <title>Sign Up - QuickGig</title>
+            </Helmet>
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5 dark:bg-gray-800 dark:text-white dark:border">
+                <h3 className='font-bold text-2xl text-center'>Sign Up Your Account</h3>
                 <form onSubmit={handleRegister} className="card-body">
                     <fieldset className="fieldset">
                         {/* name */}
                         <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="name" required />
+                        <input type="text" name='name' className="input dark:bg-gray-800 dark:text-white dark:border dark:border-white" placeholder="name" required />
                         {/* Photo url */}
                         <label className="label">Photo Url</label>
-                        <input type="text" name='photo' className="input" placeholder="photo url" required />
+                        <input type="text" name='photo' className="input dark:bg-gray-800 dark:text-white dark:border dark:border-white" placeholder="photo url" required />
                         {/* Email */}
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" required />
+                        <input type="email" name='email' className="input dark:bg-gray-800 dark:text-white dark:border dark:border-white" placeholder="Email" required />
 
                         <label className="label">Password</label>
-                        <label className="input validator relative">
+                        <label className="input validator dark:bg-gray-800 dark:text-white dark:border dark:border-white relative">
 
                             <input
                                 type={showPassword ? "text" : "password"}
@@ -107,7 +109,7 @@ const Register = () => {
                             <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
                         </p>
 
-                        <button type='submit' className="btn btn-neutral mt-4">Register</button>
+                        <button type='submit' className="btn btn-neutral mt-4">Sign Up</button>
                         <div className="divider">OR</div>
                         <button onClick={handleSignInWithGoogle} type="button" className="btn btn-outline btn-secondary">
                             <FcGoogle size={20}></FcGoogle>

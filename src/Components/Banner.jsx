@@ -37,10 +37,10 @@ const Banner = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto my-6">
+        <div className="w-11/12 mx-auto py-6">
             <div className="flex  sm:flex-row justify-center items-center mb-10 ">
                 <input
-                    className="bg-white w-full lg:w-5/12 sm:w-80 px-4 py-2 rounded-l-2xl border border-gray-300 shadow-sm"
+                    className="bg-white dark:bg-gray-800 w-full lg:w-5/12 sm:w-80 px-4 py-2 rounded-l-2xl border-2 dark:text-white dark:border-white border-gray-300 shadow-sm"
                     type="text"
                     placeholder="Search "
                 />
@@ -50,8 +50,8 @@ const Banner = () => {
             </div>
 
             <div className="text-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800">Empowering You Through Every Gig</h2>
-                <p className="text-gray-600 mt-2">
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Empowering You Through Every Gig</h2>
+                <p className="text-gray-600 dark:text-white mt-2">
                     Explore a smarter way to hire help or earn from your skills. QuickGig connects people and tasks—fast, flexible, and reliable.
                 </p>
             </div>

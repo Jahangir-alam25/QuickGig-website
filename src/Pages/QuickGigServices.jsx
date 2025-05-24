@@ -27,10 +27,10 @@ const services = [
 
 const QuickGigServices = () => {
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 pb-16">
+    <section className="w-full max-w-6xl mx-auto px-4 pb-16 ">
       <div className="text-center mb-14">
-        <h2 className="text-4xl font-extrabold text-gray-800 drop-shadow-sm">Why Choose QuickGig?</h2>
-        <p className="text-lg text-gray-600 mt-3">
+        <h2 className="text-4xl font-extrabold dark:text-white text-gray-800 drop-shadow-sm">Why Choose QuickGig?</h2>
+        <p className="text-lg dark:text-white text-gray-600 mt-3">
           A smarter freelance marketplace built for speed, trust, and flexibility.
         </p>
       </div>

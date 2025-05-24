@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthContext';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +19,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        
         signIn(email, password).then((result) => {
             const user = result.user;
             navigate(`${location.state ? location.state : "/"}`);
@@ -43,16 +44,18 @@ const Login = () => {
             })
     }
     return (
-        <div className='flex justify-center items-center min-h-screen'>
-
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+        <div className='flex justify-center items-center min-h-screen dark:bg-gray-800 bg-amber-50'>
+            <Helmet>
+                <title>Login - QuickGig</title>
+            </Helmet>
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5 dark:bg-gray-800 dark:text-white dark:border dark:border-white">
                 <h3 className='font-bold text-2xl text-center'>Login Your Account</h3>
-                <form onSubmit={handleLogin} className="card-body">
+                <form onSubmit={handleLogin} className="card-body dark:bg-gray-800 dark:text-white">
                     <fieldset className="fieldset">
-                        <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" />
-                        <label className="label">Password</label>
-                        <label className="input validator relative">
+                        <label className="label dark:text-white">Email</label>
+                        <input type="email" name='email' className="input dark:bg-gray-800 dark:text-white dark:border dark:border-white" placeholder="Email" />
+                        <label className="label dark:text-white">Password</label>
+                        <label className="input dark:bg-gray-800 dark:text-white dark:border dark:border-white validator relative">
 
                             <input
                                 type={showPassword ? "text" : "password"}
@@ -77,7 +80,7 @@ const Login = () => {
                             <FcGoogle size={20}></FcGoogle>
                             Continue with Google
                         </button>
-                        <h3 className='font-bold text-center py-2'>Don't have an account ? <Link className='text-secondary' to="/auth/register">Register</Link></h3>
+                        <h3 className='font-bold text-center py-2'>Don't have an account ? <Link className='text-secondary' to="/auth/register">SingUp</Link></h3>
                     </fieldset>
                 </form>
             </div>
