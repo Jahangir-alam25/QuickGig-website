@@ -8,7 +8,8 @@
 
 🔗 [Visit QuickGig](https://serene-daffodil-19ba7c.netlify.app/)
 
-> Replace this with your actual deployed link
+<!-- Project Photo -->
+<img src="https://i.ibb.co/sv5Hw1gb/quick-gig.png" alt="Cover" width="100%" />
 
 ---
 
@@ -50,11 +51,16 @@
 - Firebase Console (Auth & Hosting)
 
 ---
+##### 📦 Installation & Setup
 
-## 📦 Getting Started
+ **Clone the Repository:**
 
-### 1. Clone the Repository
+   ```bash
+   git clone https://github.com/your-username/quick-gig.git
+   ```
+ **Run the Command:**
 
-```bash
-git clone https://github.com/yourusername/quickgig.git
-cd quickgig
+   ```bash
+   npm install
+
+   ```
