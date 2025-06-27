@@ -73,7 +73,7 @@ const PostedTasks = () => {
       });
   };
   return (
-    <div className="sm:px-20 px-4 py-12 bg-amber-50 dark:text-white dark:bg-gray-800">
+    <div className="sm:px-20 px-4 py-12 min-h-screen bg-amber-50 dark:text-white dark:bg-gray-800">
       <Helmet>
         <title>Posted Tasks - QuickGig</title>
       </Helmet>
@@ -101,7 +101,7 @@ const PostedTasks = () => {
                   <td className="px-4 py-2 border">${task.budget}</td>
                   <td className="px-4 py-2 border gap-2 flex flex-wrap justify-center items-center">
                     <Link
-                      to={`/update-task/${task._id}`}
+                      to={`/dashboard/update-task/${task._id}`}
                       className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 cursor-pointer"
                     >
                       Update

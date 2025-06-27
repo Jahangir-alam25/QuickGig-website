@@ -27,9 +27,9 @@ const services = [
 
 const QuickGigServices = () => {
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 pb-16 ">
-      <div className="text-center mb-14">
-        <h2 className="text-4xl font-extrabold dark:text-white text-gray-800 drop-shadow-sm">Why Choose QuickGig?</h2>
+    <section className=" w-11/12 mx-auto py-12 ">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-extrabold dark:text-white drop-shadow-sm">Why Choose QuickGig?</h2>
         <p className="text-lg dark:text-white text-gray-600 mt-3">
           A smarter freelance marketplace built for speed, trust, and flexibility.
         </p>
@@ -39,13 +39,13 @@ const QuickGigServices = () => {
         {services.map(service => (
           <div
             key={service.id}
-            className={`rounded-2xl p-6 shadow-xl bg-gradient-to-br ${service.bgColor} transform hover:-translate-y-2 transition duration-300`}
+            className={`rounded-2xl p-6 shadow-xl bg-gray-50 dark:bg-gray-700  transform hover:-translate-y-2 transition duration-300`}
           >
-            <div className="mb-4 bg-white/20 p-4 rounded-full w-fit">
+            <div className="mb-4 bg-green-200 p-4 rounded-full w-fit">
               {service.icon}
             </div>
-            <h3 className="text-white text-2xl font-semibold">{service.title}</h3>
-            <p className="text-white/90 mt-2 text-sm">{service.description}</p>
+            <h3 className="text-2xl font-semibold">{service.title}</h3>
+            <p className=" mt-2 text-sm">{service.description}</p>
           </div>
         ))}
       </div>

@@ -8,10 +8,10 @@ const Footer = () => {
         <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
             <div className="lg:w-1/3">
                 <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-blue-600">
-                    <img src="https://i.ibb.co/spxk8Q2n/5464588.jpg" alt="logo" className="h-8 w-8" />
+                    <div className="flex items-center justify-center   ">
+                    <img src="https://i.ibb.co/DPDHTfhW/anywhere.png" alt="logo" className="h-8 w-8" />
                     </div>
-                    <span className="self-center text-2xl font-semibold text-white">QuickGig</span>
+                     <span className="text-green-600 font-bold text-2xl"><a >Quick<span className="text-pink-300">G</span>ig</a></span>
                 </a>
                 <div className='flex flex-col gap-2 mt-2 sm:pl-16'>
                     <p className='border-b pb-1 border-dashed w-fit'>Email: support@quickgig.com</p>

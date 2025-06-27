@@ -4,6 +4,9 @@ import QuickGigServices from './QuickGigServices';
 import QuickGigReviews from './QuickGigReviews';
 import FeaturedTasks from './FeaturedTasks';
 import { Helmet } from 'react-helmet-async';
+import TopCategories from './TopCategories';
+import FreelancerSearchFilter from './FreelancerSearchFilter';
+import LatestBlogSection from './LatestBlogSection';
 
 const Home = () => {
     return (
@@ -11,10 +14,15 @@ const Home = () => {
             <Helmet>
                 <title>Home - QuickGig</title>
             </Helmet>
-            <Banner></Banner>
+          <div className=''>
+              <Banner></Banner>
             <FeaturedTasks></FeaturedTasks>
+            <TopCategories></TopCategories>
+            <FreelancerSearchFilter></FreelancerSearchFilter>
             <QuickGigServices></QuickGigServices>
             <QuickGigReviews></QuickGigReviews>
+            <LatestBlogSection></LatestBlogSection>
+          </div>
         </div>
     );
 };

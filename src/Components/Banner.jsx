@@ -37,33 +37,19 @@ const Banner = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto py-6">
-            <div className="flex  sm:flex-row justify-center items-center mb-10 ">
-                <input
-                    className="bg-white dark:bg-gray-800 w-full lg:w-5/12 sm:w-80 px-4 py-2 rounded-l-2xl border-2 dark:text-white dark:border-white border-gray-300 shadow-sm"
-                    type="text"
-                    placeholder="Search "
-                />
-                <button className="bg-green-600 text-white text-lg px-10 py-2 rounded-r-2xl  transition">
-                    Search
-                </button>
-            </div>
+        <div className="pb-6">
+          
 
-            <div className="text-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Empowering You Through Every Gig</h2>
-                <p className="text-gray-600 dark:text-white mt-2">
-                    Explore a smarter way to hire help or earn from your skills. QuickGig connects people and tasks—fast, flexible, and reliable.
-                </p>
-            </div>
+           
             <Slider {...settings}>
                 {slides.map((slide) => (
-                    <div className="relative">
+                    <div className="relative container mx-auto overflow-hidden">
                         <img
-                            className="rounded-lg w-full h-120"
+                            className=" w-full h-120"
                             src={slide.image}
                             alt="Slide 1"
                         />
-                        <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white rounded-lg">
+                        <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white">
                             <h2 className="text-3xl font-bold">{slide.title}</h2>
                             <p className="text-center my-4">{slide.subtitle}</p>
                             <button className="btn text-white bg-[#009fff]">Learn More</button>
