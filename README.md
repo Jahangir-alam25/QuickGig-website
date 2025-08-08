@@ -51,12 +51,12 @@
 - Firebase Console (Auth & Hosting)
 
 ---
-##### 📦 Installation & Setup
+###  **Installation & Setup**
 
  **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/quick-gig.git
+   git clone https://github.com/Jahangir-alam25/QuickGig-website.git
    ```
  **Run the Command:**
 
